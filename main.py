@@ -15,7 +15,7 @@ TEMPLATE_NAME = "template.xlsx"
 
 class Gas:
 
-    def __init__(self, n, f, b_rt=0, d_rt=0, b_ps=0, d_ps=0, rt=0, ps=0):
+    def __init__(self, n, f, b_rt=0.0, d_rt=0.0, b_ps=0.0, d_ps=0.0, rt=0.0, ps=0.0):
         self.name = n
         self.formula = f
         self.base_retention_time = b_rt
