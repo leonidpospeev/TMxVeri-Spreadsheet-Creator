@@ -160,9 +160,11 @@ class ExcelHandler:
         return self.__status
 
     def save_file(self, cp):
+# cp is a chromatograph all the calculations are made for, instance of ChromatographData class      
         try:
             ws = self.work_book.active
             ws.title = cp.serial_no
+            ws[self.cell_chromatograph_serial_number] = cp.serial_no
 
             for i in range(0, 5):
                 ws[self.cell_verification_date[i]] = cp.verifications[i].date_time
@@ -187,7 +189,7 @@ class ExcelHandler:
                 ws[self.cell_chromatogram_h2_peak_square[i]] = cp.verifications[i].gases[7].peak_square
 
             self.work_book.save(cp.serial_no + ".xlsx")
-            self.__status = "Saved succesfully to" + cp.serial_no + ".xlsx.\n"
+            self.__status = "Saved succesfully to " + cp.serial_no + ".xlsx.\n"
         except Exception as e:
             self.__status = "Something went wrong, the file is not saved.\n>>> " + str(e) + "\n"
 
